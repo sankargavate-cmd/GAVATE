@@ -1,5 +1,5 @@
 import cors from "cors";
-import express, { Application, Request, Response } from "express";
+import express, { Application } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import { corsOrigins, isProduction } from "./config/env";
@@ -33,7 +33,7 @@ export function createApp(): Application {
       // and silently break the signature. Stashing the raw buffer here,
       // scoped to only the webhook path, avoids holding onto raw bytes
       // for every request in the app.
-      verify: (req: Request, _res: Response, buf: Buffer) => {
+      verify: (req, _res, buf) => {
         if (req.originalUrl.startsWith("/api/v1/payments/cashfree/webhook")) {
           req.rawBody = Buffer.from(buf);
         }

@@ -6,7 +6,7 @@ import { prisma } from "../config/database";
  * whether it can reach the database — useful for local setup verification
  * and later for uptime/monitoring checks.
  */
-export async function getHealth(_req: Request, res: Response) {
+export async function getHealth(req: Request, res: Response) {
   let dbStatus: "connected" | "unreachable" = "unreachable";
 
   try {
