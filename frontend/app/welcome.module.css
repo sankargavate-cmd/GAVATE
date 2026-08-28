@@ -1,0 +1,238 @@
+.page {
+  --green-900: #1e4029;
+  --green-700: #2b6a39;
+  --green-600: #357a44;
+  --green-50: #eef4ec;
+  --soil-600: #8a6a46;
+  --soil-50: #f6f1ea;
+  --ink: #1c231c;
+  --ink-muted: #5b6659;
+  --line: #dde3d9;
+  --surface: #ffffff;
+  --bg: #fbfaf7;
+  --error: #b3261e;
+  --error-bg: #fdecea;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- splash --- */
+
+.splash {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--green-900) 0%, var(--green-700) 100%);
+  color: #fff;
+}
+
+.sprout {
+  width: 64px;
+  height: 64px;
+  opacity: 0;
+  transform: scale(0.6);
+  animation: sproutIn 0.7s cubic-bezier(0.25, 0.8, 0.35, 1) 0.15s forwards;
+}
+
+.wordmark {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: riseIn 0.6s ease-out 0.55s forwards;
+  text-align: center;
+}
+
+.wordmarkNative {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  margin-top: 0.3rem;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 0;
+  animation: riseIn 0.6s ease-out 0.95s forwards;
+  text-align: center;
+}
+
+.tapHint {
+  position: absolute;
+  bottom: 2.5rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  animation: riseIn 0.6s ease-out 1.6s forwards;
+}
+
+@keyframes sproutIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes riseIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprout,
+  .wordmark,
+  .tagline,
+  .tapHint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- language selection --- */
+
+.languageScreen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.5rem 2rem;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green-700);
+  margin-bottom: 0.4rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.subtitle {
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+.languageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.languageOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.languageOption:hover {
+  border-color: var(--green-600);
+}
+
+.languageOption:focus-visible {
+  outline: 2px solid var(--green-600);
+  outline-offset: 2px;
+}
+
+.languageOptionSelected {
+  border-color: var(--green-700);
+  background: var(--green-50);
+}
+
+.languageOptionText {
+  display: flex;
+  flex-direction: column;
+}
+
+.languageNative {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.languageLabel {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.checkCircle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.languageOptionSelected .checkCircle {
+  border-color: var(--green-700);
+  background: var(--green-700);
+  color: #fff;
+}
+
+.checkCircle svg {
+  width: 13px;
+  height: 13px;
+}
+
+.continueButton {
+  margin-top: auto;
+  background: var(--green-700);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.continueButton:hover:not(:disabled) {
+  background: var(--green-900);
+}
+
+.continueButton:disabled {
+  background: var(--line);
+  color: var(--ink-muted);
+  cursor: default;
+}
