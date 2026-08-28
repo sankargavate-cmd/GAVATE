@@ -417,6 +417,10 @@ export default function AdminDetailPage() {
     );
   }
 
+  if (state.kind !== "loaded") {
+    return null;
+  }
+
   const { admin } = state;
   const status = statusOf(admin);
   const removed = status === "removed";
